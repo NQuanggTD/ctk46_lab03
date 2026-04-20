@@ -4,7 +4,13 @@ import { useActionState, useState } from "react";
 
 import SubmitButton from "@/components/submit-button";
 import { Button } from "@/components/ui/button";
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardHeader,
+  CardTitle,
+} from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
@@ -139,7 +145,10 @@ export default function ContactPage() {
               </CardDescription>
             </CardHeader>
             <CardContent>
-              <ContactForm key={formKey} onReset={() => setFormKey((prev) => prev + 1)} />
+              <ContactForm
+                key={formKey}
+                onReset={() => setFormKey((prev) => prev + 1)}
+              />
             </CardContent>
           </Card>
         </div>

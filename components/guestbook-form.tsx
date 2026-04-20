@@ -18,7 +18,10 @@ interface GuestbookFormProps {
 }
 
 export default function GuestbookForm({ onCreated }: GuestbookFormProps) {
-  const [state, formAction] = useActionState(createGuestbookEntry, initialState);
+  const [state, formAction] = useActionState(
+    createGuestbookEntry,
+    initialState,
+  );
   const formRef = useRef<HTMLFormElement>(null);
 
   useEffect(() => {

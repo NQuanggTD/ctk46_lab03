@@ -6,7 +6,13 @@ import useSWR from "swr";
 import GuestbookForm from "@/components/guestbook-form";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardHeader,
+  CardTitle,
+} from "@/components/ui/card";
 import { Separator } from "@/components/ui/separator";
 import type { GuestbookEntry } from "@/data/guestbook";
 
@@ -17,7 +23,9 @@ const fetcher = async (url: string): Promise<GuestbookEntry[]> => {
   const data = await res.json().catch(() => null);
 
   if (!res.ok) {
-    throw new Error(data?.error ?? "Khong the tai so luu but. Vui long thu lai.");
+    throw new Error(
+      data?.error ?? "Khong the tai so luu but. Vui long thu lai.",
+    );
   }
 
   return data as GuestbookEntry[];
@@ -28,7 +36,7 @@ export default function GuestbookPage() {
     "/api/guestbook",
     fetcher,
   );
-  const entries = data ?? [];
+  const entries = useMemo(() => data ?? [], [data]);
 
   const [deletingId, setDeletingId] = useState<string | null>(null);
   const [currentPage, setCurrentPage] = useState(1);
@@ -55,7 +63,10 @@ export default function GuestbookPage() {
       }
 
       await mutate();
-      const nextTotalPages = Math.max(1, Math.ceil((entries.length - 1) / ITEMS_PER_PAGE));
+      const nextTotalPages = Math.max(
+        1,
+        Math.ceil((entries.length - 1) / ITEMS_PER_PAGE),
+      );
       setCurrentPage((prev) => Math.min(prev, nextTotalPages));
     } catch (deleteError) {
       alert(
@@ -72,7 +83,9 @@ export default function GuestbookPage() {
     <div className="mx-auto max-w-4xl space-y-6 px-4 py-12">
       <div>
         <h1 className="text-3xl font-bold">So luu but</h1>
-        <p className="mt-2 text-muted-foreground">Hay de lai loi nhan cho toi nhe!</p>
+        <p className="mt-2 text-muted-foreground">
+          Hay de lai loi nhan cho toi nhe!
+        </p>
       </div>
 
       <Card>
@@ -163,7 +176,9 @@ export default function GuestbookPage() {
                 </div>
               </CardHeader>
               <CardContent className="space-y-4">
-                <p className="leading-relaxed text-foreground/90">{entry.message}</p>
+                <p className="leading-relaxed text-foreground/90">
+                  {entry.message}
+                </p>
                 <Button
                   type="button"
                   variant="destructive"

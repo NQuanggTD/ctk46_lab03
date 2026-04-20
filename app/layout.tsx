@@ -16,7 +16,8 @@ const geistMono = Geist_Mono({
 
 export const metadata: Metadata = {
   title: "Portfolio & Blog",
-  description: "Website portfolio/blog duoc nang cap voi data fetching, API routes va Server Actions.",
+  description:
+    "Website portfolio/blog duoc nang cap voi data fetching, API routes va Server Actions.",
 };
 
 export default function RootLayout({

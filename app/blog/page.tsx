@@ -39,13 +39,19 @@ export default async function BlogPage() {
               <CardHeader>
                 <div className="mb-1 flex items-center gap-2">
                   <Badge variant="secondary">Tac gia #{post.userId}</Badge>
-                  <span className="text-sm text-muted-foreground">Bai #{post.id}</span>
+                  <span className="text-sm text-muted-foreground">
+                    Bai #{post.id}
+                  </span>
                 </div>
                 <CardTitle className="capitalize">{post.title}</CardTitle>
-                <CardDescription className="line-clamp-2">{post.body}</CardDescription>
+                <CardDescription className="line-clamp-2">
+                  {post.body}
+                </CardDescription>
               </CardHeader>
               <CardContent className="pt-0">
-                <span className="text-sm font-medium text-primary">Doc them →</span>
+                <span className="text-sm font-medium text-primary">
+                  Doc them →
+                </span>
               </CardContent>
             </Card>
           </Link>

@@ -55,8 +55,7 @@ export async function createGuestbookEntry(
     }
 
     return (
-      entry.name === result.data.name &&
-      entry.message === result.data.message
+      entry.name === result.data.name && entry.message === result.data.message
     );
   });
 
